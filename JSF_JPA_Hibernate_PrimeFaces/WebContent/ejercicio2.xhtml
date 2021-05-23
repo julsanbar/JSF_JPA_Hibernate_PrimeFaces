@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="WEB-INF/templates/plantilla.xhtml">
+
+ <ui:define name="titulo">
+        Baloncesto
+ </ui:define>
+
+	<ui:define name="cabecera">
+        <h1>Baloncesto</h1>
+    </ui:define>
+
+	<ui:define name="contenido">
+
+	<p:growl id="mensaje"  severity="info,error,fatal"  showDetail="true"/>
+	<p:autoUpdate>true</p:autoUpdate>
+	
+	<h:form id="ej3">
+			
+		<p:outputLabel value="Ej 3:Asigna un jugador a un partido en una temporada, siempre y cuando el jugador pertenezca a ese equipo en dicha temporada." /> 
+			
+		<p:panelGrid columns="2" id="tabEj3a">
+		
+			<p:outputLabel value="Nombre de la Temporada*"/>
+			
+			<p:selectOneMenu value="#{ejercicio2Controller.codTemporada}" required="true" requiredMessage="Campo Requerido">
+				<f:selectItem itemLabel="SELECCIONE" itemValue="-"/>
+				<f:selectItems  value="#{ejercicio2Controller.lista2}"/>
+			</p:selectOneMenu>			
+		
+		</p:panelGrid>
+		
+		<p:panelGrid id="tabEj3b">
+		
+			<p:row>
+				<p:column>
+					<p:outputLabel value="nombre partido"/>
+				</p:column>
+				<p:column>
+					<p:outputLabel value="Nombre jugador"/>
+				</p:column>
+				<p:column>
+					<p:outputLabel value="canastas"/>
+				</p:column>
+				<p:column>
+					<p:outputLabel value="asistencias"/>
+				</p:column>
+				<p:column>
+					<p:outputLabel value="rebotes"/>
+				</p:column>
+			</p:row>
+		
+			<p:row>
+			
+				<p:column>
+
+					<p:selectOneMenu value="#{ejercicio2Controller.codPartido}" required="true" requiredMessage="Campo Requerido">
+						<f:selectItem itemLabel="SELECCIONE" itemValue="-"/>
+						<f:selectItems value="#{ejercicio2Controller.lista3}"/>
+					</p:selectOneMenu>	
+			
+				</p:column>
+			
+				<p:column>
+		
+					<p:selectOneMenu value="#{ejercicio2Controller.codJugador}" required="true" requiredMessage="Campo Requerido">
+						<f:selectItem itemLabel="SELECCIONE" itemValue="-"/>
+						<f:selectItems value="#{ejercicio2Controller.lista4}"/>
+					</p:selectOneMenu>	
+		
+				</p:column>
+			
+				<p:column>
+					 
+					<p:inputNumber value="#{ejercicio2Controller.partidoJugador.canastas}" converter="javax.faces.Integer" decimalPlaces="0" id="canasta" required="true" requiredMessage="Rellene Canastas">
+						<f:validateLongRange for="canasta" minimum="0"/>
+					</p:inputNumber>
+					<p:message for="canasta"/>
+					
+				</p:column>
+			
+				<p:column>
+				
+					<p:inputNumber value="#{ejercicio2Controller.partidoJugador.asistencias}" converter="javax.faces.Integer" decimalPlaces="0" id="asistencia" required="true" requiredMessage="Rellene asistencias">
+						<f:validateLongRange for="asistencia" minimum="0"/>
+					</p:inputNumber>
+					<p:message for="asistencia"/>						
+				
+				</p:column>
+				
+				<p:column>
+				
+					<p:inputNumber value="#{ejercicio2Controller.partidoJugador.rebotes}" converter="javax.faces.Integer" decimalPlaces="0" id="rebote" required="true" requiredMessage="Rellene rebotes">
+						<f:validateLongRange for="rebote" minimum="0"/>
+					</p:inputNumber>
+					<p:message for="rebote"/>
+				
+				</p:column>
+			
+			</p:row>
+				
+		</p:panelGrid>
+	
+		<p:commandButton icon="ui-icon-search" value="Insertar datos jugador" actionListener="#{ejercicio2Controller.insertarJugador()}" ajax="false"/>
+	
+	</h:form>
+
+	</ui:define>
+
+	<ui:define name="pie">
+		<p:link value="Volver al menú" outcome="index"/>	
+	</ui:define>
+	
+</ui:composition>

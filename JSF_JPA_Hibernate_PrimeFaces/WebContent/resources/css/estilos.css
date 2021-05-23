@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#cabecera{
+	
+	background: #2957ac;
+	color: white;
+	height: 10rem;
+	font-weight: bold;
+	margin: 1rem 1rem;
+	text-align: left;
+	padding-top: 1rem;
+	
+}
+
+.contenido{
+	
+	background: #babdb6;
+	margin: 1rem 1rem;
+	
+}
+
+#pie>a{
+	
+	background: #2957ac;
+	color: white;
+	margin: 1rem 1rem;
+	text-decoration: none;
+	text-align: center;
+	
+}

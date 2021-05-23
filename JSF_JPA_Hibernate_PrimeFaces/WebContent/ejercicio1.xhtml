@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="WEB-INF/templates/plantilla.xhtml">
+
+ <ui:define name="titulo">
+        Baloncesto
+ </ui:define>
+
+	<ui:define name="cabecera">
+        <h1>Baloncesto</h1>
+    </ui:define>
+
+	<ui:define name="contenido">
+
+	<p:growl id="mensaje"  severity="error,fatal"  showDetail="true"/>
+	<p:autoUpdate>true</p:autoUpdate>
+
+	<h:form id="ej1">
+
+		<h:outputText value="Ej 1:Seleccione un jugador y una temporada y al pulsar el botón muestre los nombres de los equipos donde ha jugado y el salario que ha cobrado."/>
+		
+		<p:panelGrid columns="2" id="tabEj1">
+		
+			<p:outputLabel value="Nombre del jugador*"/>
+			
+			<p:selectOneMenu value="#{ejercicio1Controller.codJugador}" required="true" requiredMessage="Campo Requerido ">
+				<f:selectItem itemLabel="SELECCIONE" itemValue="-"/>
+				<f:selectItems value="#{ejercicio1Controller.lista1}"/>
+			</p:selectOneMenu>
+		
+			<p:outputLabel value="Nombre de la Temporada*"/>
+			
+			<p:selectOneMenu value="#{ejercicio1Controller.codTemporada}" required="true" requiredMessage="Campo Requerido ">
+				<f:selectItem itemLabel="SELECCIONE" itemValue="-"/>
+				<f:selectItems value="#{ejercicio1Controller.lista2}"/>
+			</p:selectOneMenu>			
+		
+		</p:panelGrid>
+
+		<p:commandButton icon="ui-icon-search" value="Buscar equipos" action="#{ejercicio1Controller.buscarEquipos()}" ajax="false"/>
+	
+	</h:form>
+
+	<h:form id="ej2">
+	
+		<h:outputText value="Ej 2:Seleccione una temporada y al pulsar el botón muestre los nombres de los jugadores que han cambiado de equipo en dicha temporada."/>
+		
+		<p:panelGrid columns="2" id="tabEj2">
+		
+			<p:outputLabel value="Nombre de la Temporada*"/>
+			
+			<p:selectOneMenu value="#{ejercicio1Controller.codTemporada}" required="true" requiredMessage="Campo Requerido ">
+				<f:selectItem itemLabel="SELECCIONE" itemValue="-"/>
+				<f:selectItems value="#{ejercicio1Controller.lista2}"/>
+			</p:selectOneMenu>
+		
+		</p:panelGrid>
+
+		<p:commandButton icon="ui-icon-search" value="Buscar jugadores" action="#{ejercicio1Controller.buscarJugadores()}" ajax="false"/>
+	
+	</h:form>
+	
+	</ui:define>
+	
+	<ui:define name="pie">
+		<p:link value="Volver al menú" outcome="index"/>	
+	</ui:define>
+	
+</ui:composition>

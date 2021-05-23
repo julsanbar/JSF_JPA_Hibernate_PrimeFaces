@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Resultado</title>
+
+</h:head>
+<h:body>
+
+	<p:dataTable emptyMessage="NO HAY DATOS PARA LA TEMPORADA Y JUGADOR SELECCIONADOS" value="#{salarioNombre}" var="lista">
+		
+		<p:column headerText="Nombres de Equipos">
+			
+			<p:outputLabel value="#{lista[1]}"/>
+		
+		</p:column>
+	
+		<p:column headerText="Salarios">
+		
+			<p:outputLabel value="#{lista[0]}"/>		
+		
+		</p:column>
+	
+	</p:dataTable>
+
+	<p:link value="Volver" outcome="ejercicio1"/>
+
+</h:body>
+</html>
